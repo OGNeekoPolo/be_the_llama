@@ -17,6 +17,12 @@ class CompaniesController < ApplicationController
     @companies = Company.find_by_trial_status(false)
     render json: @companies
   end
+
+  def created_last_month
+    @companies = Company.where(created_at: Time.now..1.month.ago)
+
+    render json: @companies
+  end
 end
 
 # The plan levels are:
