@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116001137) do
+ActiveRecord::Schema.define(version: 20171116005941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.date "trial_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "plan_level_id"
+    t.boolean "trial_status"
     t.index ["plan_level_id"], name: "index_companies_on_plan_level_id"
   end
 
