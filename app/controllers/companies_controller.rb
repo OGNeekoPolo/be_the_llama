@@ -10,7 +10,11 @@ class CompaniesController < ApplicationController
   end
 
   def with_modern_plan
-    @plan_levels = PlanLevel.where(:is_modern => true)
+    @companies = Company.where(plan_level: PlanLevel.where(is_modern: true))
+
+    respond_to do |format|
+      format.json { render :with_modern_plan }
+    end
   end
 
   def not_trialing
